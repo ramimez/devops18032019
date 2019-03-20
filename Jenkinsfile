@@ -6,7 +6,7 @@ stages {
          sh '''
            echo "Prepare continuous delivery env"
            '''
-         }
+         } 
      }
 
      stage ("Build"){
