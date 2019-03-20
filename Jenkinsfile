@@ -1,7 +1,7 @@
 pipeline { 
 agent any  
 stages {
-         stage("Prepare"){ 
+         stage("Prepare Wevioo"){ 
        steps{
          sh '''
            echo "Prepare continuous delivery env"
@@ -14,6 +14,7 @@ stages {
          sh '''
            echo "Building app"
          '''
+           bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install/)       
        }
      }
 }
