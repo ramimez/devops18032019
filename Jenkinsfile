@@ -1,23 +1,19 @@
-pipeline {
-	agent any
-	    
-	stages {
-	stage ('Initialize') {
-	steps {
-	sh 
-	 echo "PATH = ${PATH}"
-	 echo "M2_HOME = ${M2_HOME}"
-						mvn -f demo/pom.xml install
-						
-	  
-	}
-	}
-	
+pipeline { (1)
+agent any  (2)
+stages {
+         stage("Prepare"){ (3)
+       steps{
+         sh '''
+           echo "Prepare continuous delivery env"
+           '''
+         }
+     }
 
-	stage ('Build') {
-	steps {
-	echo 'This is a minimal pipeline.'
-	}
-	}
-	}
-	}
+     stage ("Build"){
+       steps {
+         sh '''
+           echo "Building app"
+         '''
+       }
+     }
+}
